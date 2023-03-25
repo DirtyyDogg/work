@@ -1,0 +1,35 @@
+/*
+press one time preform X
+press another time dont imput x if they press x rapidly
+if no press x between first press and rapidly reset back input block. 
+
+** HOW TO ARCHIEF
+  if event press x & !pressed : pressed = true
+
+  when pessed = true : set val x 0
+
+
+
+  pressed true after first press & !pressed // making him no i want to preform action atleast one time before input get blocked
+
+  when pressed is active
+
+*/
+int pressedXX;
+
+main{
+
+  if( event_press(PS4_CROSS) & !pressedXX )
+  {
+    pressedXX = TRUE;
+  }
+
+  if(pressedXX)
+  {
+    set_val(PS4_CROSS,0);
+  }
+
+  if (event_release(PS4_CROSS) & pressedXX ) {
+    pressed = FALSE;
+  }
+}

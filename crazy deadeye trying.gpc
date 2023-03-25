@@ -1,0 +1,134 @@
+ /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    |                                                      DEAD SHOT (8)                                                    |
+			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+/*
+          set_val(TRACE_2, deadeyeEND)
+          set_val(TRACE_6, deadeyeINIT)
+			  	// If DeadShot is enable for the curent profile
+					if(toggle_deadshot[profile_idx] == 1)
+					{
+			    		// if(!deadeye && get_lval(PS4_L2) && event_press(PS4_R2)) 
+			    		if(get_val(PS4_R2) && !deadeyeINIT){
+                combo_run(DEADSHOT)
+                deadeyeINIT = 1;
+                // deadeyeINIT = !deadeyeINIT;
+              }
+
+              if(deadeyeINIT = 1)	combo_run(DEADSHOT);
+
+              // event_release(PS4_L2) && deadeyeINIT || deadeyeEND
+              if(deadeyeINIT =1 && !get_val(PS4_R2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1 && !get_val(PS4_L2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1) { combo_stop(DEADSHOT); deadeyeINIT=0; deadeyeEND=0; }
+			    }
+
+          */
+          crazyyyy
+
+
+           /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    |                                                      DEAD SHOT (8)                                                    |
+			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+          set_val(TRACE_2, deadeyeEND)
+          set_val(TRACE_6, deadeyeINIT)
+			  	// If DeadShot is enable for the curent profile
+					if(toggle_deadshot[profile_idx] == 1)
+					{
+			    		// if(!deadeye && get_lval(PS4_L2) && event_press(PS4_R2)) 
+			    		if(get_val(PS4_R2) && !deadeyeINIT){
+                combo_run(DEADSHOT)
+                deadeyeINIT = 1;
+                // deadeyeINIT = !deadeyeINIT;
+              }
+
+              if(deadeyeINIT = 1)	combo_run(DEADSHOT);
+
+              // event_release(PS4_L2) && deadeyeINIT || deadeyeEND
+              if(deadeyeINIT =1 && !get_val(PS4_R2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1 && !get_val(PS4_L2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1) { combo_stop(DEADSHOT); deadeyeINIT=0; deadeyeEND=0; }
+			    }
+
+          combo DEADSHOT {
+    set_val(PS4_R3,100);
+    wait(80);
+    set_val(PS4_R3,100);
+    wait(80);
+    set_val(PS4_R3,100);
+    wait(80);
+    set_val(PS4_R3,100);
+    set_val(PS4_L2,0);
+    set_val(PS4_R2,0);
+    wait(80);
+    set_val(PS4_R3,100);
+    set_val(PS4_L2,100);
+    set_val(PS4_R2,100);
+    wait(40);
+     set_val(PS4_R3,0);
+    set_val(PS4_L2,0);
+    set_val(PS4_R2,0);
+    wait(80);
+    deadeyeINIT = 1;
+    wait(40);
+}
+combo DEADSHOT1 {
+    // set_val(PS4_L2,100);
+    // set_val(PS4_R2,100);
+    // set_val(PS4_R3,100);
+    // wait(40);
+    // set_val(PS4_L2,100);
+    // set_val(PS4_R2,0);
+    // set_val(PS4_R3,0);
+    // wait(40);
+    // set_val(PS4_L2,100);
+    // set_val(PS4_R2,0);
+    // set_val(PS4_R3,100);
+    // wait(40);
+    set_val(PS4_L2,100);
+    set_val(PS4_R2,100);
+    set_val(PS4_R3,100);
+    // set_val(PS4_R3,100);
+    wait(40);
+    set_val(PS4_R3,0);
+    set_val(PS4_L2,0);
+    set_val(PS4_R2,0);
+    wait(40);
+    deadeyeINIT =1;
+    wait(40);
+    // wait(370);
+} 
+
+
+/*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    |                                                      DEAD SHOT (8)                                                    |
+			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+			  	// If DeadShot is enable for the curent profile
+          set_val(TRACE_2, deadeyeEND)
+              set_val(TRACE_3, nowshoot)
+              set_val(TRACE_4, testmemo);
+              set_val(TRACE_6, deadeyeINIT)
+					if(toggle_deadshot[profile_idx] == 1)
+					{
+              set_val(TRACE_2, deadeyeEND);
+              set_val(TRACE_3, nowshoot);
+              set_val(TRACE_4, testmemo);
+              set_val(TRACE_6, deadeyeINIT);
+              
+              if(get_val(PS4_R2) && !deadeyeINIT){
+                combo_run(DEADLY)
+                deadeyeEND = 100;
+                // deadeyeINIT = !deadeyeINIT;
+              }
+
+              // if(deadeyeINIT = 1)	combo_run(DEADSHOT);
+
+              // event_release(PS4_L2) && deadeyeINIT || deadeyeEND
+              if(deadeyeINIT&& !get_val(PS4_R2) && !get_val(PS4_L2) ) {if(nowshoot== 999) combo_stop(DEADSHOT); combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1 && !get_val(PS4_L2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1) { combo_stop(DEADSHOT); deadeyeINIT=0; deadeyeEND=0; }
+              // deadeyeINIT = FALSE;
+              // deadeyeEND=FALSE;
+			    		// if(!deadeye && get_lval(PS4_L2) && event_press(PS4_R2)) 
+			    		// if(get_val(PS4_L2) && !deadeyeEND ){
+
+			    }
