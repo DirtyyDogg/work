@@ -112,6 +112,7 @@
 	int toggle_spin[3];        // 3
 	int toggle_autoDE[3];      // 4
   int toggle_deadshot[3];    // 5
+  int unscope_on[3];    // 5
 	// int fasttonics_on[3];      // 5
 	// int toggle_crouchshot[3];  // 6
 	// int toggle_jumpshot[3];    // 7
@@ -121,7 +122,7 @@
 	define AMOUNT_OF_PROFILES = 3;  
 	
 // Amount of mods that have an independent toggle for each profile - Used for display profiles
-	define AMOUNT_OF_MULTI_TOGGLE = 5;
+	define AMOUNT_OF_MULTI_TOGGLE = 6;
 		
 // 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
 
@@ -143,7 +144,8 @@
 	// // modName_idx = idk
 	int horseSprint_on;
 	int reload_on;
-	int unscope_on;
+  int l3klik;
+	
 	int scope_on;
 	int rope_on;
 	int melee_on;
@@ -232,18 +234,22 @@
 
   int L3gvd100;
   int L3piemol;
+  
+  int L1gvd100;
+  int L1piemol;
+
+
 	int r11;
   int hold;
 // Counter
 	int count_black;  // for screen saver
-	
-// Double Tap
-	int double_tap;  
+
 	
 // Quick Swap Weapons / Tonics
 	int wx_v; 
 	int wy_v;
 	int item;
+	int L1item;
 	
 // Fishing mod
     // int rx = 0;
@@ -289,6 +295,30 @@
   int Timer;
   int pressed2, pressed3, pressed2Combo;
 
+    int timelimit = 400;
+  int countT;
+  int toggle_counteR;
+  int DblClick_L3;
+  int togglE;
+  int clicKK;
+	int activee
+  int double__tap;int dubtapRelT= 200;
+
+
+  int DblClick_R3 = FALSE;
+  int togglER3;
+  int choiceR3Mod = FALSE;
+  int RtL_UHM;
+  int LtR_UHM;
+  int goudvis =TRUE;
+  int readyforstop = FALSE;
+  int count,combo_to_run;
+
+  
+  //int clicKKR3;
+  int devR3;
+
+
   int tester;
   int pressedXX, XXonLock, pressedXXTimer, pressedComboThing;
   // int wait_cross;
@@ -299,8 +329,9 @@
   // int idkanymore;
 
   int bester = 0;
-  define time_max_tap_double = 250;
+  int time_max_tap_double = 250;
   int timer_tap_double;
+  int double_tap;
 
 int HEADSHOT_MODE;
 int AUTO_HEADSHOT_RUNNING;
@@ -309,6 +340,14 @@ int MIDDLE_RUNNING;
 int LONG_RUNNING;
 int CLOSE_RUNNING;
 int WAIT;
+
+
+  // int DblClick_L3;
+  // int togglE;
+  // int clicKK;
+	// int activee
+  // int double__tap;int dubtapRelT= 200;
+
 
 int testDEVV;
 int testDEVV1;
@@ -326,40 +365,73 @@ int nowshoot;
   int gvd20 = FALSE;
   int piemol;
 
+  int swap_on2;
+  int pauw;
+
+  int unscope;
+  int unscopeint;
+  int unscopeend;
+  int litt;
+  int lit;
+
+  int deadshotpenis;
+  int deadshotdddd;
+  int bScope;
+  int klikl3;
+  int klikl33;
+  int  COUNTER_LIMIT = 240;
+
+  
+  // int choiceR3Mod = FALSE;
+  // int readyforstop = TRUE;
+
+  
+
 // 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
  
 init{
 // Profile 1
 	// Toggles
     toggle_rapidfire[0]  = TRUE;
+    toggle_rapidfire[1]  = TRUE;
+    toggle_rapidfire[3]  = TRUE;
+
 	  toggle_headshot[0]   = TRUE;
+	  toggle_headshot[1]   = TRUE;
+	  toggle_headshot[2]   = TRUE;
+    
+    range[0]             = 0;
+    range[1]             = 2 ;
+    range[2]             = 2 ;
+    
+    toggle_spin[0] = TRUE;
+    toggle_spin[1]  = TRUE;
+    toggle_spin[2] = FALSE;
+    
+    spin[0] = 0;
+
     toggle_autoDE[0]     = FALSE;
-	  toggle_deadshot[0]   = TRUE;
-	  toggle_deadshot[1]   = TRUE;
+	  
 	  toggle_deadshot[2]   = TRUE;
-	  // toggle_spin[0] = FALSE;
-    fasttonics_on = FALSE;
   
   // Values
-    rate_of_fire[0]      = 25;
-    range[0]             = 0;
-    fasttonics_mode = 2;
-     // spin[0] = 0
 
-	
-
+	// pauw=TRUE;
+  fasttonics_on = TRUE;
+  fasttonics_mode = 2;
+  bScope =FALSE;
+  l3klik=TRUE;
 	
 // Profile 2
 	// Toggles
-    toggle_rapidfire[1]  = TRUE;
-    toggle_headshot[1]   = TRUE;
+    // toggle_headshot[1]   = TRUE;
     // toggle_spin[1] = TRUE;
     // fasttonics_on = TRUE;
     // toggle_autoDE[1]     = FALSE;
     // toggle_deadshot[1]     = FALSE;
 
    // Values
-    range[1]             = 1 ;
+    
     rate_of_fire[1]      = 0 ;
     // fasttonics_mode = 2;
     
@@ -401,7 +473,7 @@ init{
 
     // swap_on = FALSE;
   
-    // spin_on = FALSE;
+     
 
 	currentSlot = get_slot();
 }
@@ -419,18 +491,24 @@ main {
   }
   // set_val(TRACE_3, gvd200);
   // set_val(TRACE_3, gvd20);
-  set_val(TRACE_4, scope);
+  // set_val(TRACE_4, scope);
+  set_val(TRACE_4, pauw);
+  // set_val(TRACE_4, pauw);
 
 //   if(event_press(PS4_UP)) { bester = bester + 10 }
 //   if(event_press(PS4_LEFT)) { bester = bester - 1 }
 
 // }
 if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
+  // if(event_press(PS4_UP)) { pauw = pauw + 1 }
+  if(event_press(PS4_UP)) { pauw = !pauw  }
+  if(event_press(PS4_UP) && get_ptime(PS4_UP) >= 200) { pauw = FALSE }
+  if(event_press(PS4_DOWN)) { toggle_autoDE = FALSE; toggle_autoDE[1] = FALSE; toggle_autoDE[0] = FALSE; } 
   if(event_press(PS4_RIGHT)) { tester = tester + 1 }
   if(event_press(PS4_LEFT)) { tester = tester - 1 }
   if(event_press(PS4_DOWN)) { toggle_autoDE[2] = FALSE; toggle_autoDE[1] = FALSE; toggle_autoDE[0] = FALSE; } 
   // if(event_press(PS4_UP)) { tester = tester + 5 }
-  if(event_press(PS4_UP)) { toggle_autoDE[2] = TRUE; toggle_autoDE[1] = TRUE; toggle_autoDE[0] = TRUE; } 
+  // if(event_press(PS4_UP)) { toggle_autoDE[2] = TRUE; toggle_autoDE[1] = TRUE; toggle_autoDE[0] = TRUE; } 
   
 
 }
@@ -829,15 +907,16 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 				toggle_spin[profile_idx]   = toggle( 2, toggle_spin[profile_idx]  );
 				toggle_autoDE[profile_idx]     = toggle( 3, toggle_autoDE[profile_idx]    );
 				
+        toggle_deadshot[profile_idx]   = toggle( 4, toggle_deadshot[profile_idx]  );
+				// scope_on         = toggle( 6, scope_on      );
+				unscope_on[profile_idx]       = toggle( 5, unscope_on[profile_idx]      );
        
 				
 			
 			// Mods that have same ON/OFF status on every Profiles
 			  //toggle_I_want_to_edit = toggle( corresponding modName_idx, toggle_I_want_to_edit );
-				fasttonics_on    = toggle( 4,  fasttonics_on   );
-				reload_on        = toggle( 5, reload_on       );
-				scope_on         = toggle( 6, scope_on      );
-				unscope_on       = toggle( 7, unscope_on      );
+				fasttonics_on    = toggle( 6,  fasttonics_on   );
+				reload_on        = toggle( 7, reload_on       );
 				rope_on          = toggle( 8, rope_on         );
 				melee_on         = toggle( 9, melee_on        );
         
@@ -849,7 +928,6 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 				eagle_on         = toggle( 13, eagle_on        );
 				FPSlayout_on     = toggle( 14, FPSlayout_on    );
 				swap_on          = toggle( 15, swap_on         );
-        toggle_deadshot[profile_idx]   = toggle( 16, toggle_deadshot[profile_idx]  );
 				
 				// stopDE_on        = toggle( 20, stopDE_on       );
 				
@@ -869,55 +947,115 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 		if(!ModMenu)
 		{	
 		/* Swap triggers and bumpers */
-			if(swap_on) // (13)
+			if(!swap_on) // (13)
 			{
 				// swap(PS4_R1, PS4_R2);
         // autospin_button = PS4_R1;
 				// swap(PS4_L1, PS4_L2);
+			}else if(swap_on) // (13)
+			{
+        
+				// swap(PS4_R1, PS4_R2);
+        // autospin_button = PS4_R1;
+				// swap(PS4_L1, PS4_L2);
+				swap(PS4_L3, PS4_R1);
+				swap(PS4_R1, PS4_L1);
+
+				swap(PS4_R1, PS4_R1);
 			}
-			
+
+			if(!swap_on2) // (13)
+			{
+          // swap_on=0;
+				// swap(PS4_R1, PS4_R2);
+        // autospin_button = PS4_R1;
+				// swap(PS4_L1, PS4_L2);
+			}else if(swap_on2) // (13)
+			{
+        swap_on=0;
+				swap(PS4_R3, PS4_CROSS);
+				// swap(PS4_R1, PS4_R2);
+        // autospin_button = PS4_R1;
+				// swap(PS4_L1, PS4_L2);
+			}
+
+      if(!FPSlayout_on) /* */
+      {
+        if(swap_on) // (13)
+			  {
+				  swap(PS4_R1, PS4_CROSS);
+				  // swap(PS4_R1, PS4_R2);
+          // autospin_button = PS4_R1;
+				  // swap(PS4_L1, PS4_L2);
+			  }else if(!swap_on) // (13)
+			  {
+				  // swap(PS4_R1, PS4_R2);
+          // autospin_button = PS4_R1;
+				  // swap(PS4_L1, PS4_L2);
+			  }
+        // autospin_button = PS4_L3;
+        autospin_button = PS4_L3;
+      } else if(FPSlayout_on) /* */
+      {
+        // autospin_button = PS4_R1;
+        if(swap_on) // (13)
+			  {
+				  // swap(PS4_R1, PS4_R2);
+          // autospin_button = PS4_R1;
+				  // swap(PS4_L1, PS4_L2);
+			  }else if(!swap_on) // (13)
+			  {
+				  // swap(PS4_R1, PS4_R2);
+          // autospin_button = PS4_R1;
+				  // swap(PS4_L1, PS4_L2);
+			  }
+        
+          autospin_button = PS4_CROSS;
+          // autospin_button = PS4_CROSS;
+
+      }
 		// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜
 		/* Standard FPS Layout */
-			if(FPSlayout_on) // (13)
-			{
-				// run_btn = PS4_L3;
-				// crouch_btn = PS4_CROSS;
+			// if(FPSlayout_on) // (13)
+			// {
+			// 	// run_btn = PS4_L3;
+			// 	// crouch_btn = PS4_CROSS;
         
-        if(swap_on) // (13)
-			  {
-				// swap(PS4_R1, PS4_L3);
+      //   if(swap_on) // (13)
+			//   {
+			// 	// swap(PS4_R1, PS4_L3);
         
-          autospin_button = PS4_CROSS
-				// swap(PS4_L1, PS4_L2);
-			  } else if(!swap_on) // (13)
-			  {
-          // autospin_button = PS4_CROSS
-				// swap(PS4_R1, PS4_L3);
-        //autospin_button = PS4_L3;
-        autospin_button = PS4_CIRCLE
-				// swap(PS4_L1, PS4_L2);
-			  }
+      //     autospin_button = PS4_CROSS
+			// 	// swap(PS4_L1, PS4_L2);
+			//   } else if(!swap_on) // (13)
+			//   {
+      //     // autospin_button = PS4_CROSS
+			// 	// swap(PS4_R1, PS4_L3);
+      //   //autospin_button = PS4_L3;
+      //   autospin_button = PS4_CIRCLE
+			// 	// swap(PS4_L1, PS4_L2);
+			//   }
         
-			}
-			if(!FPSlayout_on) // (13)
-			{
-				// run_btn = PS4_L3;
-				// crouch_btn = PS4_CROSS;
-        autospin_button = PS4_SQUARE
-        if(swap_on) // (13)
-			  {
-				// swap(PS4_R1, PS4_L3);
-        autospin_button = PS4_LEFT;
-				// swap(PS4_L1, PS4_L2);
-			  } else if(!swap_on) // (13)
-			  {
-          autospin_button = PS4_UP
-				// swap(PS4_R1, PS4_L3);
-        // autospin_button = PS4_L3;
-				// swap(PS4_L1, PS4_L2);
-			  }
+			// }
+			// if(!FPSlayout_on) // (13)
+			// {
+			// 	// run_btn = PS4_L3;
+			// 	// crouch_btn = PS4_CROSS;
+      //   autospin_button = PS4_SQUARE
+      //   if(swap_on) // (13)
+			//   {
+			// 	// swap(PS4_R1, PS4_L3);
+      //   autospin_button = PS4_LEFT;
+			// 	// swap(PS4_L1, PS4_L2);
+			//   } else if(!swap_on) // (13)
+			//   {
+      //     autospin_button = PS4_UP
+			// 	// swap(PS4_R1, PS4_L3);
+      //   // autospin_button = PS4_L3;
+			// 	// swap(PS4_L1, PS4_L2);
+			//   }
         
-			}
+			// }
 			// else
 			// {
 				// run_btn = PS4_CROSS;
@@ -940,6 +1078,23 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 					if(event_release(PS4_R3) && !get_val(PS4_L2) && eagle_vision)
 						eagle_vision = FALSE;   
 				}
+			}
+		// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜
+		// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜
+		/* Easy EagleEye 
+		   Tap R3/RS only to Eagle Eye */
+			if(l3klik)
+			{
+				if(get_lval(PS4_L1) && get_val(PS4_L2)&& !get_val(PS4_R1))
+				{
+					// if(event_press(PS4_R3) && !eagle_vision && !get_val(PS4_L2))
+					if(event_press(PS4_CROSS) &&!klikl33 ) combo_run(klikl3);
+						// if(klikl33) combo_run(klikl3);
+
+					// if(event_release(PS4_R3) && !get_val(PS4_L2) && eagle_vision)
+					// 	eagle_vision = FALSE;   
+				}
+					if(event_release(PS4_CROSS) &&!get_val(PS4_L1) &&!get_val(PS4_R2)) klikl33= FALSE;
 			}
 		// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜
 
@@ -992,13 +1147,186 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
           }
             
           } 
-        // else 
-    
+
+                /*   |                 /*                                    FAST TONICS Button                                                    |
+        ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/
+        // Tonic Jump with Touchpad
+        // Up Side > Left Position Health Tonics | Mid Position Miracle / Bitter Tonics | Right Position Deadeye Tonics
+        // Down Side > Left Position: Hat back on | Right Position: Default controller Action First Person  
+          
+          /* if (DblClick_L3>0)DblClick_L3=DblClick_L3 - get_rtime(); */
+        //--------------------------------------------------------------
+          /*
+            if (event_press(PS4_L3) && DblClick_L3 <= 0 ) DblClick_L3 = timelimit;
+            else if (event_press(PS4_L3)&& DblClick_L3 > 0 ){
+              clicKK = !clicKK;
+              
+              if(clicKK){
+                togglE = TRUE; 
+                combo_run(rightStick1);
+              }
+              else{
+                togglE = FALSE;
+                combo_run(rightStick2);
+              }
+          }
+          //-------------------------------------------------------------- 
+          if(togglE) {
+              set_val(PS4_L1, 100);
+              combo_run(movement);            
+          }
       
-     //else if(combo_running(TONICSPAM)) { combo_stop(TONICSPAM); block_all_inputs(); }
 
-     // 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜	
 
+          
+          // if(get_val(PS4_R3)&&get_ptime(PS4_R3)<1500)
+          //   toggle_counteR = TRUE;// i changed event press r2 to get val r2 so i could add a ptime 
+          //   set_val (TRACE_5, countT);// i set a trace so i could watch your count in the device monitor
+        
+        if(get_val(PS4_R2)&&get_val(PS4_L2))
+          toggle_counteR = TRUE;
+          set_val (TRACE_5, countT);
+          
+        
+          if(toggle_counteR) countT += get_rtime();
+      
+          if(countT == COUNTER_LIMIT) {
+              toggle_counteR = FALSE;
+              combo_run(RUMBLE_ON);
+              combo_run(RUMBLE_OFF);
+              countT = 0;
+              set_val(TRACE_4, countT);
+          }
+          if(countT && get_val(PS4_R1)) combo_run(DOUBLE_L3);// i changed event release R1 to get val R1, otherwise i could not get the combo double r3 to run
+          */
+        
+        /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+        |                                                     L3                                                  |
+        ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/
+        // Tonic Jump with Touchpad
+        // Up Side > Left Position Health Tonics | Mid Position Miracle / Bitter Tonics | Right Position Deadeye Tonics
+        // Down Side > Left Position: Hat back on | Right Position: Default controller Action First Person  
+            /**/
+           /*
+            if (DblClick_L3>0)DblClick_L3=DblClick_L3 - get_rtime();
+        //--------------------------------------------------------------
+            if (event_press(PS4_L3) &&get_lval(PS4_UP) && DblClick_L3 <= 0 ) DblClick_L3 = timelimit;
+            else if (event_press(PS4_L3) && DblClick_L3 > 0 ){
+              clicKK = !clicKK;
+              
+              if(clicKK){
+                togglE = TRUE; 
+                combo_run(rightStick1);
+              }
+              else{
+                togglE = FALSE;
+                combo_run(rightStick2);
+              }
+          }
+          //-------------------------------------------------------------- 
+          if(togglE) {
+              set_val(PS4_L1, 100);
+              combo_run(movement);            
+          }
+      
+
+
+          
+          // if(get_val(PS4_R3)&&get_ptime(PS4_R3)<1500)
+          //   toggle_counteR = TRUE;// i changed event press r2 to get val r2 so i could add a ptime 
+          //   set_val (TRACE_5, countT);// i set a trace so i could watch your count in the device monitor
+        
+        if(get_val(PS4_R2)&&get_val(PS4_L2))
+          toggle_counteR = TRUE;
+          set_val (TRACE_5, countT);
+          
+        
+          if(toggle_counteR) countT += get_rtime();
+      
+          if(countT == COUNTER_LIMIT) {
+              toggle_counteR = FALSE;
+              combo_run(RUMBLE_ON);
+              combo_run(RUMBLE_OFF);
+              countT = 0;
+              set_val(TRACE_4, countT);
+          }
+      
+          if(countT && get_val(PS4_R1)) combo_run(DOUBLE_L3);// i changed event release R1 to get val R1, otherwise i could not get the combo double r3 to run
+        */
+          if(event_press(PS4_L1) || event_release(PS4_L1) && swap_on && !get_val(PS4_R1)) swap_on=FALSE;
+
+          if(event_press(PS4_L1) || event_release(PS4_L1) && !swap_on &&!swap_on2 && !get_val(PS4_R1)) swap_on2=999;
+          if(swap_on2 == 999) swap(PS4_CROSS,PS4_R3);
+          // if(get_val(PS4_L1) && swap_on && !get_val(PS4_R1)) swap_on2==9;
+
+        
+        /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+        |                                                     R3 BUTTON SPIN TEST                                                 |
+        ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/
+      
+      //
+        // First Spin test Left to Right
+          
+        // if(LtR_on) {
+        //   if(get_val(PS4_R3) && get_ptime(PS4_R3) >300 ) {
+        //     // combo_run(RUMBLE_ON);
+        //       set_val(PS4_R3, 0); combo_run(LtR);
+        //   } else {
+        //      combo_run(RUMBLE_OFF);
+
+        //   }
+          
+        // }
+
+        // // Second Spin test Right to Left
+        // if(RtL_on) {
+        //   if(get_val(PS4_R3) && get_ptime(PS4_R3) >300 ) {
+        //     // combo_run(RUMBLE_ON);
+        //       set_val(PS4_R3, 0); combo_run(RtL);
+        //       set_val(TRACE_6,1);
+        //   } else {
+        //     // combo_run(RUMBLE_OFF);
+        //     set_val(TRACE_6,100);
+        //   }
+          
+        // }
+        // // Third Spin test Up to Down
+        // if(UtD_on) {
+        //   if(get_val(PS4_R3) && get_ptime(PS4_R3) >300 ) {
+        //     // combo_run(RUMBLE_ON);
+        //       set_val(PS4_R3, 0); combo_run(UtD);
+        //       set_val(TRACE_5,1);
+        //   } else {
+        //     // combo_run(RUMBLE_OFF);
+        //     set_val(TRACE_5,100);
+        //   }
+          
+        // }
+
+        // // Forth Spin test Down to Up
+        // if(DtU_on) {
+        //   if(get_val(PS4_R3) && get_ptime(PS4_R3) >300 ) {
+        //     // combo_run(RUMBLE_ON);
+        //       set_val(PS4_R3, 0); combo_run(DtU);
+        //       set_val(TRACE_6,1);
+        //   } else {
+        //     // combo_run(RUMBLE_OFF);
+        //     set_val(TRACE_6,100);
+        //   }
+          
+        // }
+
+        // if(MIX_on) {
+        //   if(get_val(PS4_R3) && get_ptime(PS4_R3) >300 ) {
+        //     combo_run(RUMBLE_ON)
+        //     // set_val(PS4_R3, 0); //combo_run(DtU);
+        //     // combo_to_run = random(5,8);
+        //     // if(combo_to_run == 5) combo_run(DtU);
+        //     // if(combo_to_run == 6) combo_run(UtD);
+        //     // if(combo_to_run == 7) combo_run(LtR); 
+        //     // if(combo_to_run == 7) combo_run(RtL); 
+        //     }
+        //   }
 
 		// Hair Trigger
 			deadzone(PS4_L2,PS4_R2,99,99);
@@ -1041,6 +1369,8 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
           // gvd100 = 0;
       }
         //same thing forR1
+      
+      
       if(event_press(PS4_R1) ) { //real r1 not swap!
           // gvd100 = 0;
           gvd100 = 1;
@@ -1048,6 +1378,22 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
         if(double_tap) //real r1
 				{
           gvd100 = 2;
+          // gvd100 = 0;
+				}
+				else
+					double_tap = 250;
+          // gvd100 = 0;
+      }
+
+        //dev test for L1
+      if(event_press(PS4_L1) ) { //real r1 not swap!
+          // gvd100 = 0;
+          L1gvd100 = 1;
+          
+        if(double_tap) //real r1
+				{
+          L1gvd100 = 2;
+
           // gvd100 = 0;
 				}
 				else
@@ -1083,6 +1429,13 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
     
       }
 
+        // L1 DEV
+      if(event_release(PS4_L1) && L1gvd100 == 1 || L1gvd100 == 2 ) { //real r1 not swap!
+          L1gvd100 = 0;
+          // gvd100 = 1;
+    
+      }
+
       /////////////////////////////////////////////////////////////////////////////////////////////////
 
       /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1091,18 +1444,9 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
             Hiding / Restoring Input on single press and double
       */
 
-      if(get_val(PS4_L3) && !get_val(PS4_L1) && L3gvd100 == 1 ) /*&& get_ptime(PS4_R1) >= 500*/
-      {
-        set_val(PS4_L3, 0);
-        // set_val(PS4_R1, 100);
-      // } else if(get_val(PS4_R1) && !get_val(PS4_L1) && gvd100 == 0 ) /*&& get_ptime(PS4_R1) >= 500*/
-      } else if(get_val(PS4_L3) && !get_val(PS4_L1) && L3gvd100 == 2 ) /*&& get_ptime(PS4_R1) >= 500*/
-      {
-        set_val(PS4_L3, 100);
-        // set_val(PS4_R1, 0);
-      }
-
-
+      /*
+        L3
+      */
       if(get_val(PS4_R1) && !get_val(PS4_L1) && gvd100 == 1 ) /*&& get_ptime(PS4_R1) >= 500*/
       {
         set_val(PS4_R1, 0);
@@ -1110,16 +1454,127 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
       // } else if(get_val(PS4_R1) && !get_val(PS4_L1) && gvd100 == 0 ) /*&& get_ptime(PS4_R1) >= 500*/
       } else if(get_val(PS4_R1) && !get_val(PS4_L1) && gvd100 == 2 ) /*&& get_ptime(PS4_R1) >= 500*/
       {
-        set_val(PS4_R1, 100);
-        // set_val(PS4_R1, 0);
+        set_val(PS4_L3, 100);
+        set_val(PS4_R1, 0);
       }
+
+
+      
+
+
+
+      // if(get_val(PS4_L1) /*&& !get_val(PS4_L1) && L1gvd100 == 1*/ && get_ptime(PS4_L1) < 200)
+      // {
+      //   set
+      // }
+
+      // /*
+      //   L1
+      // */
+      // // if(get_val(PS4_L1) /*&& !get_val(PS4_L1)*/ && L1gvd100 == 1 ) /*&& get_ptime(PS4_R1) >= 500*/
+      // if(get_val(PS4_L1) /*&& !get_val(PS4_L1)*/ && L1gvd100 == 1 && get_ptime(PS4_L1) <= 550)
+      // {
+      //   set_val(PS4_L1, 0);
+      //   wall=99;
+      //   // set_val(PS4_R1, 100);
+      // // } else if(get_val(PS4_R1) && !get_val(PS4_L1) && gvd100 == 0 ) /*&& get_ptime(PS4_R1) >= 500*/
+      // } else if(get_val(PS4_L1) /*&& !get_val(PS4_L1)*/ && L1gvd100 == 2 ) /*&& get_ptime(PS4_R1) >= 500*/
+      // {
+      //   set_val(PS4_L1, 100);
+      //   // set_val(PS4_R1, 0);
+      // }
 
       /////////////////////////////////////////////////////////////////////////////////////////////////
       
+      // /////////////////////////////////////////////////////////////////////////////////////////////////
+      // /*            
+            
+      //       Weapon switcher L1
+      // */
+
+      //  // if(event_press(PS4_R1))
+			// 	// 		item = TRUE;
+      //   if(!L1gvd100 == 2 || L1gvd100 == 0) L1item = TRUE;
+      //   if(L1gvd100 == 1) L1item = FALSE;
+			// 		if(!L1item)
+			// 		{
+      //       // set_val(PS4_R3, 100);
+			// 			if(event_press(PS4_TRIANGLE)  && get_brtime(PS4_TRIANGLE) < 300)
+			// 			{
+      //       set_val(PS4_R3, 0);
+			// 				wx_v = 0; 
+			// 				wy_v = -100;
+      //         profile_idx = 0;
+      //         display_title = TRUE;
+      //         // gvd100 = 0;
+			//       }
+			// 		// SQUARE/X for Health
+			// 			if(event_press(PS4_SQUARE) && get_brtime(PS4_SQUARE) < 300)
+			// 			{
+      //       // set_val(PS4_R3, 0);
+			// 				wx_v = -95; 
+			// 				wy_v = 0;
+      //         profile_idx = 1;
+      //         display_title = TRUE;
+      //         L1gvd100 = 1;
+			//       }
+			//     	// CIRCLE/B for Bolas
+			//         	if(event_press(PS4_CIRCLE) && get_brtime(PS4_CIRCLE) < 300)
+			//         	{	 
+      //             set_val(PS4_R3, 0);
+			//                	wx_v = -75; 
+			//                	wy_v = 75;    
+      //                 profile_idx = 0;
+      //                 display_title = TRUE;
+      //                 // gvd100 = 0;
+			//         	}
+			//     	// CROSS/A for Hat
+			//         	if(event_press(PS4_CROSS) && get_brtime(PS4_CROSS) < 300)
+			//         	{	 
+                  
+			//                	wx_v = 0; 
+			//                	wy_v = 100;
+      //                 profile_idx = 2;
+      //                 display_title = TRUE;
+      //                 // gvd100 = 0;
+			//         	}
+			 
+			// 			if(wx_v || wy_v) 
+			// 				combo_run(QUICK_SWAP);
+		  //   	// BLOCK
+		  //   		// if(get_val(PS4_TRIANGLE) && (get_ptime(PS4_TRIANGLE) >= 250))
+		  //   		if(wall && get_val(PS4_RX) && (get_ptime(PS4_RX) >= 250))
+      //       set_val(PS4_RX, 100);
+		  //       		else
+		  //           		set_val(PS4_RX, 0);
+
+		  //   		if(wall==2 &&get_val(PS4_RY) && (get_ptime(PS4_RY) >= 250))
+		  //       		set_val(PS4_RY, 100);
+		  //       		else
+		  //           		set_val(PS4_RY, 0);
+
+		  //   		if(get_val(PS4_TRIANGLE) && (get_ptime(PS4_TRIANGLE) >= 250))
+		  //       		set_val(PS4_TRIANGLE, 100);
+		  //       		else
+		  //           		set_val(PS4_TRIANGLE, 0);
+		            		
+		  //   		if(get_val(PS4_SQUARE) && (get_ptime(PS4_SQUARE) >= 250))
+		  //       		set_val(PS4_SQUARE, 100);
+		  //       		else
+		  //           		set_val(PS4_SQUARE, 0);
+		
+		  //   		set_val(PS4_CIRCLE, 0);set_val(PS4_R3, 0);
+		  //   		set_val(PS4_CROSS, 0);
+      //       set_val(PS4_SQUARE,0);
+      //       set_val(PS4_TRIANGLE,0);
+			//  		}
+
+      // // /////////////////////////////////////////////////////////////////////////////////////////////////
+
       /////////////////////////////////////////////////////////////////////////////////////////////////
       /*            
             
-            Weapon switcher
+            Weapon switcher R1
       */
 
        // if(event_press(PS4_R1))
@@ -1131,7 +1586,6 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
             // set_val(PS4_R3, 100);
 						if(event_press(PS4_TRIANGLE)  && get_brtime(PS4_TRIANGLE) < 300)
 						{
-            set_val(PS4_R3, 0);
 							wx_v = 0; 
 							wy_v = -100;
               profile_idx = 0;
@@ -1168,9 +1622,17 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
                       display_title = TRUE;
                       // gvd100 = 0;
 			        	}
+                // CROSS/A for Hat
+			        	
+                // if(event_press(PS4_CROSS) && get_brtime(PS4_CROSS) < 300)
+			        	// {	 
+			          //      	wx_v = -75; 
+			          //      	wy_v = 75;    
+			        	// }
 			 
 						if(wx_v || wy_v) 
 							combo_run(QUICK_SWAP);
+							// combo_run(QUICK_SNAP);
 		    	// BLOCK
 		    		if(get_val(PS4_TRIANGLE) && (get_ptime(PS4_TRIANGLE) >= 250))
 		        		set_val(PS4_TRIANGLE, 100);
@@ -1195,10 +1657,11 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
             
             Runing with R1
       */
-      if(piemol == 101 && !fps_run) combo_run(RUN_FPS); 
+      if(piemol == 101 ) combo_run(RUN_FPS); 
 		    	
       if(event_release(PS4_R1) &&piemol == 101 /*combo_running(QUICK_SWAP) */){ piemol=FALSE; fps_run=FALSE; }
 
+      // if(L1piemol == 101 ) combo_run(RAPIDFIRE); 
 
 
       ////////////////////////////////////////////////////////////////////
@@ -1475,6 +1938,9 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
       // }
 
       // if(get_val(PS4_R1) && !get_val(PS4_L1) && gvd100 == 1 ) /*&& get_ptime(PS4_R1) >= 500*/
+      if(get_val(PS4_R1) && !get_val(PS4_L1)&& get_ptime(PS4_R1) <= 500) {
+        set_val(PS4_R1,0);
+      } else if(get_val(PS4_R1) && !get_val(PS4_L1)&& get_ptime(PS4_R1) >= 500) {set_val(PS4_R1,100); }
 
 
       
@@ -1494,6 +1960,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 				if(SELECTOR_RUNNING&&event_release(PS4_L1))
 				{
           item = FALSE;
+          L1item = FALSE;
           SELECTOR_RUNNING=FALSE;
           if(!SELECTOR_SECTION)
           {
@@ -1536,6 +2003,49 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 		    	// if(event_release(PS4_L1) && !combo_running(QUICK_SWAP))
 		    	// 	// item = FALSE;
 		    	// 	fix = FALSE;
+
+          if(pauw) {
+            if(swap_on==1 && !swap_on2) {swap_on2=1; swap_on=FALSE;}
+            else
+            if(!swap_on && swap_on2==1) {swap_on2=FALSE; swap_on=1;}
+            else
+            if(!swap_on && !swap_on2) {swap_on2=FALSE; swap_on=FALSE; combo_run(vib3x); }
+            else
+            if(swap_on && !swap_on2) {swap_on2=TRUE; swap_on=FALSE; combo_run(vib3x); }
+          //   if(event_press(PS4_CROSS)) combo_run(pressXonce);
+          //   if(get_val(PS4_CROSS) && get_ptime(PS4_CROSS) < 300) set_val(PS4_CROSS,0);
+          //   if(event_press(PS4_CROSS)) combo_run(pressXonce);
+          //   if(!pressXonce &&get_val(PS4_CROSS) && get_ptime(PS4_CROSS) <= 150 ){
+          //     set_val(PS4_CROSS,0);
+          //     combo_run(vib2x);
+          //     combo_run(pressXonce);
+
+          //     combo_run(pressXonce);
+          //   }
+          //   if(!pressXonce &&get_val(PS4_CROSS) && get_ptime(PS4_CROSS) >=150 ){
+              
+          //     combo_run(vib2x);
+          //     combo_run(pressXonce);
+          //   }
+          //   else if(!pressXrun&&get_val(PS4_CROSS) && get_ptime(PS4_CROSS) > 900 ) {
+          //     set_val(PS4_CROSS,0);
+          //     combo_run(vib3x);
+          //     combo_run(pressXrun);
+          //   }
+          //   if(event_press(PS4_CROSS)){
+          //     if(double_tap)
+				  //   {
+					// // set_val(PS4_R1,100)
+					// // combo_run(RUMBLE_ON);
+					//   combo_run(pressXrun);
+					// // display_title = TRUE;
+				  //   }
+				  //   else
+					//   double_tap = 250;
+          // }
+          //   else set_val(PS4_CROSS,0)
+          
+          }
           
 
           /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
@@ -1577,37 +2087,8 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 						if(!cinema && isqrt(pow(abs(get_ival(PS4_LX)),2) + pow(abs(get_ival(PS4_LY)),2)) < 20)
 							run = 0;
 		    		}// RockStar AutoRun end
-            // if(get_val(PS4_CROSS) && get_ptime(PS4_CROSS) < 300) set_val(PS4_CROSS,0);
-            // if(event_press(PS4_CROSS)) combo_run(pressXonce);
-            // if(!pressXonce &&get_val(PS4_CROSS) && get_ptime(PS4_CROSS) <= 150 ){
-            // set_val(PS4_CROSS,0);
-						// combo_run(vib2x);
-            // combo_run(pressXonce);
-
-						// combo_run(pressXonce);
-            // }
-            // if(!pressXonce &&get_val(PS4_CROSS) && get_ptime(PS4_CROSS) >=150 ){
-              
-              // combo_run(vib2x);
-              // combo_run(pressXonce);
-            // }
-            // else if(!pressXrun&&get_val(PS4_CROSS) && get_ptime(PS4_CROSS) > 900 ) {
-              // set_val(PS4_CROSS,0);
-              // combo_run(vib3x);
-              // combo_run(pressXrun);
-            // }
-          //   if(event_press(PS4_CROSS)){
-          //     if(double_tap)
-				  //   {
-					// // set_val(PS4_R1,100)
-					// // combo_run(RUMBLE_ON);
-					//   combo_run(pressXrun);
-					// // display_title = TRUE;
-				  //   }
-				  //   else
-					//   double_tap = 250;
-          // }
-            // else set_val(PS4_CROSS,0)
+            
+            
 		
 				}
         // if(event_release(PS4_CROSS)&& pressXonce ) { pressXonce=FALSE; pressXrun=FALSE; combo_stop(pressXonce); } 
@@ -2020,7 +2501,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 			// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜
 			/* Skid Stop (Horse Level 3 minimum) 
 			   Double tap R1/RB */
-				if(skidStop_on)
+				if(horseSprint_on)
 				{
 				    if(!get_val(PS4_L1) &&get_val(PS4_SQUARE) && event_press(PS4_R1))
 		    		{
@@ -2384,12 +2865,13 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
               //////////////////////////////////////////////////////////////////////////////////////
 
 
-
+      if(autospin_right_onoff && !get_val(PS4_L1) && (get_lval(autospin_button) && get_ptime(autospin_button) > 300 )) gvd1 = TRUE;
+      
       if(!get_val(PS4_L2) &&!get_val(PS4_L1) && event_press(autospin_button)  ){ //r
         if(double_tap) //
 				{
 					// combo_run(RUMBLE_ON);
-          gvd1 = TRUE
+          gvd = TRUE
 				}
 				else
 					double_tap = 250;
@@ -2402,8 +2884,9 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
       }
 
       if(event_release(autospin_button) && gvd1 ) { // 
-        combo_stop(autospin_right);
-        gvd1 = FALSE;
+            combo_stop(autospin_right);
+            gvd1 = FALSE;
+        // gvd = FALSE;
       
       }
 
@@ -2417,6 +2900,120 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
       // }
 
 		}
+
+          // /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    // |                                                      unscope SHOT (8)                                                    |
+			    // ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+			  	// // If DeadShot is enable for the curent profile
+          // set_val(TRACE_2, unscopeend)
+          //     set_val(TRACE_3, nowshoot)
+          //     set_val(TRACE_4, unscopeint);
+          //     set_val(TRACE_6, unscope)
+					// if(unscope_on[profile_idx] == 1)
+					// {
+          //     set_val(TRACE_2, unscopeend)
+          //     set_val(TRACE_3, nowshoot)
+          //     set_val(TRACE_4, unscopeint);
+          //     set_val(TRACE_6, unscope)
+              
+          //     if(get_val(PS4_R2) && !unscopeint){
+          //       combo_run(DEADLY)
+          //       unscopeint = 100;
+          //       // deadeyeINIT = !deadeyeINIT;
+          //     }
+
+          //     if(unscopeint == 100 && get_val(PS4_R2)) {
+          //       nowshoot = 999;
+          //     }
+
+          //     // if(deadeyeINIT = 1)	combo_run(DEADSHOT);
+
+          //     // event_release(PS4_L2) && deadeyeINIT || deadeyeEND
+          //     if(unscopeint&& !get_val(PS4_R2) && !get_val(PS4_L2) ) {if(nowshoot== 999) combo_run(DEADSHOTNU); combo_stop(DEADSHOT); unscope_on=FALSE; nowshoot=0; unscopeint=FALSE; }
+          //     // if(deadeyeINIT =1 && !get_val(PS4_L2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+          //     // if(deadeyeINIT =1) { combo_stop(DEADSHOT); deadeyeINIT=0; deadeyeEND=0; }
+          //     // deadeyeINIT = FALSE;
+          //     // deadeyeEND=FALSE;
+			    // 		// if(!deadeye && get_lval(PS4_L2) && event_press(PS4_R2)) 
+			    // 		// if(get_val(PS4_L2) && !deadeyeEND ){
+
+			    // }
+          /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    |                                                      unscope SHOT (8)                                                    |
+			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+			  	// If DeadShot is enable for the curent profile
+          /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    |                                                      unscope SHOT (8)                                                    |
+			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+          
+          if(pauw)  {
+            /* goin in to scope  */
+            if(!bScope & get_val(PS4_L2) && !event_press(PS4_DOWN) )  {  combo_run(cScope); }
+        
+
+            if(bScope&&get_val(PS4_L2) && get_val(PS4_R2) && !deadshotpenis) combo_run(cScopeIN);
+
+            // if(event_release(PS4_L2)) { bScope}
+          }
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
+			    |                                                      unscope SHOT (8)                                                    |
+			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
+			  	// If DeadShot is enable for the curent profile
+          set_val(TRACE_2, unscopeend)
+              set_val(TRACE_3, nowshoot)
+              set_val(TRACE_4, unscopeint);
+              set_val(TRACE_6, unscope)
+					if(unscope_on[profile_idx] == 1)
+					{
+              set_val(TRACE_2, unscopeend)
+              set_val(TRACE_3, nowshoot)
+              set_val(TRACE_4, unscopeint);
+              set_val(TRACE_6, unscope)
+
+              // if(toggle_rapidfire[profile_idx] != 5) toggle_rapidfire[profile_idx] = 5;
+              
+              if(get_val(PS4_R2) && !unscopeint){
+                combo_run(DEADLY)
+                unscopeint = 100;
+                // deadeyeINIT = !deadeyeINIT;
+              }
+
+              if(unscopeint == 100 && get_val(PS4_R2)) {
+                combo_run(UNSCOPE_shot);
+                nowshoot = 999;
+
+              }
+
+              // if(deadeyeINIT = 1)	combo_run(DEADSHOT);
+
+              // event_release(PS4_L2) && deadeyeINIT || deadeyeEND
+              if(unscopeint&& !get_val(PS4_R2) && !get_val(PS4_L2) ) {if(nowshoot== 999) combo_run(UNSCOPE_shot); combo_stop(DEADSHOT); unscope_on=FALSE; nowshoot=0; unscopeint=FALSE; }
+              // if(deadeyeINIT =1 && !get_val(PS4_L2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1) { combo_stop(DEADSHOT); deadeyeINIT=0; deadeyeEND=0; }
+              // deadeyeINIT = FALSE;
+              // deadeyeEND=FALSE;
+			    		// if(!deadeye && get_lval(PS4_L2) && event_press(PS4_R2)) 
+			    		// if(get_val(PS4_L2) && !deadeyeEND ){
+
+			    }
 
           /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
 			    |                                                      DEAD SHOT (8)                                                    |
@@ -2638,6 +3235,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
               {
                 if(toggle_rapidfire[profile_idx] == 2 && get_lval(PS4_R2)) { combo_run(RAPID_CARCANO ); }
                 if(toggle_rapidfire[profile_idx] == 3 &&get_lval(PS4_R2)&&get_ptime(PS4_R2)>350){ set_val(PS4_R2,0); combo_run(HORSE_RAPID_CARCANO); }
+                if(toggle_rapidfire[profile_idx] == 5 &&get_lval(PS4_R2)&&get_ptime(PS4_R2)>350){ set_val(PS4_R2,0); combo_run(UNSCOPE_shot); }
               }
             }
             if(event_release(PS4_L2))AIM_ASSIST_RUNNING=FALSE;
@@ -2822,14 +3420,17 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 				display_mod( 0 ,  center_x(sizeof(RAPIDFIRE) - 1, OLED_FONT_MEDIUM_WIDTH)  , RAPIDFIRE[0]  , toggle_rapidfire[profile_idx] );
 				display_mod( 1 ,  center_x(sizeof(HEADSHOT) - 1, OLED_FONT_MEDIUM_WIDTH)   , HEADSHOT[0]   , toggle_headshot[profile_idx]  );
 				display_mod( 2,  center_x(sizeof(SPIN) - 1, OLED_FONT_MEDIUM_WIDTH)       , SPIN[0]       ,  toggle_spin[profile_idx]      );
-				display_mod( 3   ,  center_x(sizeof(AUTODEADEYE) - 1, OLED_FONT_MEDIUM_WIDTH), AUTODEADEYE[0], toggle_autoDE[profile_idx]    );
+				
+        display_mod( 3   ,  center_x(sizeof(AUTODEADEYE) - 1, OLED_FONT_MEDIUM_WIDTH), AUTODEADEYE[0], toggle_autoDE[profile_idx]    );
+				display_mod( 4 ,  center_x(sizeof(DEADSHOT) - 1, OLED_FONT_MEDIUM_WIDTH)   , DEADSHOT[0]   , toggle_deadshot[profile_idx]  );
+				display_mod( 5,  center_x(sizeof(AUTOUNSCOPE) - 1, OLED_FONT_MEDIUM_WIDTH), AUTOUNSCOPE[0], unscope_on[profile_idx]      );
+
 				// display_mod( 5,  center_x(sizeof(STOPDEADEYE) - 1, OLED_FONT_MEDIUM_WIDTH), STOPDEADEYE[0], stopDE_on       );
         
         // // Mods that have same ON/OFF status on every Profile
-				display_mod( 4,  center_x(sizeof(FASTTONICS) - 1, OLED_FONT_MEDIUM_WIDTH) , FASTTONICS[0] , fasttonics_on       );
-				display_mod( 5,  center_x(sizeof(AUTORELOAD) - 1, OLED_FONT_MEDIUM_WIDTH) , AUTORELOAD[0] , reload_on       );
-				display_mod( 6,  center_x(sizeof(AUTOSCOPE) - 1, OLED_FONT_MEDIUM_WIDTH), AUTOSCOPE[0], scope_on      );
-				display_mod( 7,  center_x(sizeof(AUTOUNSCOPE) - 1, OLED_FONT_MEDIUM_WIDTH), AUTOUNSCOPE[0], unscope_on      );
+				display_mod( 6,  center_x(sizeof(FASTTONICS) - 1, OLED_FONT_MEDIUM_WIDTH) , FASTTONICS[0] , fasttonics_on       );
+				display_mod( 7,  center_x(sizeof(AUTORELOAD) - 1, OLED_FONT_MEDIUM_WIDTH) , AUTORELOAD[0] , reload_on       );
+				// display_mod( 6,  center_x(sizeof(AUTOSCOPE) - 1, OLED_FONT_MEDIUM_WIDTH), AUTOSCOPE[0], scope_on      );
 				display_mod( 8,  center_x(sizeof(CUTTHEROPE) - 1, OLED_FONT_MEDIUM_WIDTH) , CUTTHEROPE[0] , rope_on         );
 				display_mod( 9,  center_x(sizeof(MELEESPAM) - 1, OLED_FONT_MEDIUM_WIDTH)  , MELEESPAM[0]  , melee_on        );
 				display_mod( 10,  center_x(sizeof(AUTORUN) - 1, OLED_FONT_MEDIUM_WIDTH)    , AUTORUN[0]    , autorun_on      );
@@ -2838,7 +3439,6 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 				display_mod( 13,  center_x(sizeof(EASYEAGLE) - 1, OLED_FONT_MEDIUM_WIDTH)  , EASYEAGLE[0]  , eagle_on        );
 				display_mod( 14,  center_x(sizeof(STANDARDFPS) - 1, OLED_FONT_MEDIUM_WIDTH), STANDARDFPS[0], FPSlayout_on    );
 				display_mod( 15,  center_x(sizeof(SWAP) - 1, OLED_FONT_MEDIUM_WIDTH)       , SWAP[0]       , swap_on         );
-				display_mod( 16 ,  center_x(sizeof(DEADSHOT) - 1, OLED_FONT_MEDIUM_WIDTH)   , DEADSHOT[0]   , toggle_deadshot[profile_idx]  );
 				
 				
 				
@@ -3147,7 +3747,68 @@ combo QUICK_SWAP {
     wy_v = 0;
     item = FALSE;
 }
+// combo QUICK_SWAP {
+//     set_val(PS4_L1, 100);
+//     wait(100);
+//     set_val(PS4_L1, 100);
+//     wait(100);
+//     // set_val(PS4_L1, 100);
+//     // // set_val(PS4_R1, 100);
+//     // wait(50); 
+//     // set_val(PS4_L1, 100);
+//     // if(item)
+//     // 	set_val(PS4_R1, 0);
+//     wait(50);
+//     // set_val(PS4_L1, 100); 
+//     // if(!item)
+//     // 	set_val(PS4_R1, 100);
+//     set_val(PS4_RX,wx_v);
+//     set_val(PS4_RY,wy_v);
+//     wait(100);
+
+//     set_val(PS4_L1, 100);
+//     wait(100);
+//     set_val(PS4_L1, 100);
+//     wait(100);
+
+//     /*wait(200);
+//     if(!item && (profile_idx == 1 || profile_idx == 2))
+// 		set_val(PS4_LY, -100);
+// 	wait(200);
+// 	if(!item && (profile_idx == 1 || profile_idx == 2))
+// 	{
+// 		set_val(PS4_LY, -100);
+// 		set_val(PS4_SQUARE, 100);
+// 	}*/
+// 	wait(100);
+//     wx_v = 0;
+//     wy_v = 0;
+//     item = FALSE;
+// }
+// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
+combo QUICK_SNAP {
+  set_val(PS4_L1,100);
+	set_val(PS4_R1,100);
+
+    wait(100);
+    set_val(PS4_RX,wx_v);
+    set_val(PS4_RY,wy_v);
     
+    wait(50);
+    /*wait(200);
+    if(!item && (profile_idx == 1 || profile_idx == 2))
+		set_val(PS4_LY, -100);
+	wait(200);
+	if(!item && (profile_idx == 1 || profile_idx == 2))
+	{
+		set_val(PS4_LY, -100);
+		set_val(PS4_SQUARE, 100);
+	}*/
+	wait(100);
+    wx_v = 0;
+    wy_v = 0;
+    item = FALSE;
+}
 // 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
 
 combo RAPIDFIRE { 
@@ -3405,6 +4066,89 @@ combo DEADSHOTNU {
   wait(40);
   nowshoot=FALSE;
 }
+combo klikl3 {
+  wait(20);
+  set_val(PS4_R3, 100);
+  wait(100);
+  klikl33 = TRUE;
+}
+combo cScope {
+  wait(20);
+  set_val(PS4_DOWN, 100);
+  // wait(20);
+  
+  wait(100);
+  
+
+  //scope uit ^
+  // deadshotpenis=TRUE;
+}
+combo DOUBLE_L3 {
+    // combo_run(rightStick1); wait(1);
+    togglE = TRUE; wait(2000);
+    togglE = FALSE;
+    combo_run(rightStick2);
+}
+ 
+ 
+combo movement {
+    set_val(PS4_SQUARE,100)// learn 
+    wait(1000)
+}  
+ 
+ 
+combo rightStick1 {
+    set_val(PS4_CIRCLE,100)// to 
+    wait(1000)
+} 
+ 
+ 
+combo rightStick2 {
+    set_val(PS4_CROSS,100)// share
+    wait(1000)
+}
+
+// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
+
+combo DOUBLE_R3 {
+    // combo_run(rightStick1); wait(1);
+    togglER3 = TRUE; wait(2000);
+    togglER3 = FALSE;
+    combo_run(rightStick2R3);
+}
+ 
+ 
+combo movementR3 {
+    // set_val(PS4_SQUARE,100)// learn 
+    // wait(1000)
+    call(RtL);
+}  
+ 
+ 
+combo rightStick1R3 {
+    set_val(PS4_CIRCLE,100)// to 
+    wait(1000)
+} 
+ 
+ 
+combo rightStick2R3 {
+    set_val(PS4_CROSS,100)// share
+    wait(1000)
+}
+
+// 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
+
+
+
+combo cScopeIN {
+  wait(20);
+  set_val(PS4_R2, 100);
+  wait(50);
+  set_val(PS4_DOWN, 100);
+  wait(50);
+  //scope uit ^
+  // deadshotpenis=FALSE;
+}
 combo DEADSHOT1 {
     // set_val(PS4_L2,100);
     // set_val(PS4_R2,100);
@@ -3481,6 +4225,26 @@ combo SCOPEIN {
 
 // 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
 
+combo UNSCOPE_shot {
+    // set_val(PS4_L2, 100);
+    // wait(50);
+    // set_val(PS4_L2, 100);
+    // set_val(PS4_DOWN, 100);
+    // wait(50);
+    // scope = FALSE;
+    set_val(PS4_L2, 100);
+    wait(50);
+
+
+    set_val(PS4_L2, 100);
+    // set_val(PS4_R2, 100);
+    wait(50);
+    // set_val(PS4_R2, 100);
+    // wait(50);
+    set_val(PS4_DOWN, 100);
+    wait(50);
+    scope = FALSE;
+}
 combo SCOPEOUT {
     // set_val(PS4_L2, 100);
     // wait(50);
@@ -3644,6 +4408,18 @@ combo basespin
     wait(10);
 }
 
+combo autospin_right_wait
+{
+    set_val(PS4_R1, 0);
+    wait(300);
+    lit=6;
+    // wait(100);
+    // set_val(XB1_LT, 100);
+    // set_val(XB1_LX, 100);
+    // set_val(XB1_LY, -100);
+    // wait(50);
+    // call(autospin_right);
+}
 combo autospin_right
 {
     set_val(PS4_R1, 0);

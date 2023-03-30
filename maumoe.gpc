@@ -1,0 +1,201 @@
+/*
+    Meowww
+*/
+// Int's and defines
+int crossPOUND;
+int pressed, hold;
+int waitOn;
+int fps_run;
+int MENU_SECTION_RUNNING, STARTMENU,dev,MENU;
+int double_tap;
+int double_tap_time = 250;
+
+int RF_HOLD = 40;
+int RF_NULL = 30;
+
+
+init{
+ 
+ fps_run = FALSE;
+ crossPOUND = FALSE;
+ dev=1;
+
+}
+
+main {
+//dev logs
+  if(dev==1){
+    set_val(TRACE_1, dev);
+    set_val(TRACE_6, pressed);
+    set_val(TRACE_2, hold)`;
+    set_val(TRACE_3, crossPOUND)`;
+    set_val(TRACE_4, waitOn)`;
+    set_val(TRACE_5, combo_running(combo1))`;
+  }
+  if(dev==2){
+    set_val(TRACE_1, dev);
+    set_val(TRACE_2, MENU_SECTION_RUNNING);
+    set_val(TRACE_3, STARTMENU);
+    set_val(TRACE_4, MENU);
+  }
+
+  if(get_val(PS4_L2)&& get_val(PS4_CIRCLE) && !get_val(PS4_R1))
+  {
+    if(event_press(PS4_RIGHT))
+		  dev += 1;					
+		if(event_press(PS4_LEFT))
+			dev -= 1;
+							
+		if(dev < 0)
+			dev = 2;
+		if(dev > 2)
+			dev = 0;
+  }
+  
+////////////
+//doubletap activator
+  if(double_tap)
+  double_tap -= get_rtime()
+////////////
+
+// sTOP the code in menus
+  if((get_lval(PS4_LEFT)||get_lval(PS4_LEFT)&&get_ptime(PS4_LEFT)>800)||(get_lval(PS4_RIGHT)||get_lval(PS4_RIGHT)&&get_ptime(PS4_RIGHT)>800)||event_press(PS4_OPTIONS) &&!STARTMENU)
+  {
+    MENU_SECTION_RUNNING=TRUE;
+    STARTMENU=TRUE;
+  }
+  else if(event_press(PS4_OPTIONS) &&STARTMENU&&MENU) { MENU_SECTION_RUNNING=TRUE; STARTMENU=TRUE; }
+
+ 
+  if(MENU_SECTION_RUNNING)
+  {
+    if(event_press(PS4_CROSS)) MENU = MENU + 1;  
+    if(event_press(PS4_CIRCLE))MENU = MENU - 1;
+    if((MENU<0)||( get_lval(PS4_CIRCLE)&&get_ptime(PS4_CIRCLE)>800)||get_lval(PS4_OPTIONS)&&get_ptime(PS4_OPTIONS)>800) { /*SNIPER_RIFLE=TRUE; */MENU=0; STARTMENU=0; MENU_SECTION_RUNNING=FALSE;  }
+  }
+/////////////
+
+// // First tap
+    //   if (event_press(DOUBL_TAP_BTN) && !b_tap) {
+    //             b_tap=TRUE; 
+    //             timer = wait_sec_tap;
+    // // Second tap
+    // }else if (event_press(DOUBL_TAP_BTN) && b_tap ){
+    //            b_tap=FALSE;
+    //            combo_run(vib2x);
+    //            pressed=TRUE;
+    //            pressed2Combo = TRUE;
+    //           //  pressedXX=FALSE;
+    //           //  XXonLock=FALSE;
+    //           //  pressed1=TRUE;
+    //           //  galop = TRUE;
+    //           //  combo_run (xPress);
+    // }
+    // /////////////////////////////////////////////////
+
+    //        /////////////////////////////////////////////////
+    // // Second First tap
+    //   if (event_press(DOUBL_TAP_BTN) && pressed && !B_tap) {
+    //             pressed= FALSE;
+    //             B_tap=TRUE;
+    //             Timer = Wait_sec_tap;
+    // // Thirt tap
+    // }else if (event_press(DOUBL_TAP_BTN) && B_tap && !pressed1){
+    //            B_tap=FALSE;
+    //            pressed2=TRUE;
+    //            pressed3=TRUE;
+    //           //  pressedXX=FALSE;
+    //           //  XXonLock=FALSE;
+    //           //  galop = TRUE;
+    //           //  combo_run (xPress);
+    // }
+    // /////////////////////////////////////////////////
+
+// Will always run no matter ur in menus or what + adding double tap for new function
+   if(get_val(PS4_CROSS) && get_ptime(PS4_CROSS) < 250 ){
+    waitOn = 200;
+    // combo_run(combo1);
+    crossPOUND=3;
+   }
+   else /* */
+   if(get_val(PS4_CROSS) && get_ptime(PS4_CROSS) > 250 || get_val(PS4_CROSS) && get_ptime(PS4_CROSS) < 550 ){
+    waitOn = 400;
+    // combo_run(combo1);
+    crossPOUND=8;
+   }
+   else /* */
+    
+    // combo_run(combo1);
+   
+/////////////
+
+// running 2 buttons on one button
+  if(crossPOUND ==8 && get_val(PS4_CROSS) &&!MENU_SECTION_RUNNING)
+  {
+    if(!fps_run) combo_run(combo1);
+
+  }
+  
+  if(!get_val(PS4_CROSS)&&crossPOUND) crossPOUND = FALSE;
+  
+
+  if(event_release(PS4_CROSS) && !get_val(PS4_CROSS)){
+    combo_stop(combo1);
+    fps_run = FALSE;
+  }
+/////
+
+//testing functions
+  if(myfunction()) {
+    if(get_val(XB1_RT)) {
+      combo_run(Rapid_Fire); 
+    }
+  }
+///////
+}
+
+// FUNCTIONS
+  function myfunction() {
+    if(get_val(PS4_SQUARE)) {
+      if(get_val(XB1_A))
+        RF_HOLD = adjust_speed(RF_HOLD, 10, 1000, 10);
+       if(get_val(XB1_B))
+        RF_NULL = adjust_speed(RF_NULL, 10, 1000, 10);
+      set_val(XB1_A, 0);
+      set_val(XB1_B, 0);
+      set_val(XB1_LB, 0);
+      set_val(XB1_RB, 0);
+      set_val(XB1_VIEW, 0);
+      set_val(TRACE_1, RF_HOLD / 10);
+      set_val(TRACE_2, RF_NULL / 10);
+      return 0;
+    }
+  return 1;
+  }
+  function adjust_speed(var, min_value, max_value, adjustment_increment) {
+    if(event_press(XB1_RB) && var < max_value)
+      var = var + adjustment_increment;
+    if(event_press(XB1_LB) && var > min_value)
+      var = var - adjustment_increment;
+    return var;
+  }
+//
+// combos
+combo combo1{
+  set_val(PS4_L3,100);
+  wait(100);
+  set_val(PS4_L3,0);
+  wait(50);
+  set_val(PS4_L3,100);
+  wait(100);
+  set_val(PS4_L3,0);
+  wait(50);
+  fps_run=TRUE;
+}
+combo Rapid_Fire {
+  set_val(XB1_RT, 100);
+  wait(RF_HOLD);
+  set_val(XB1_RT, 0);
+  wait(RF_NULL);
+  set_val(XB1_RT, 0);
+}
