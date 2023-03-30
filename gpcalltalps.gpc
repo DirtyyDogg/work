@@ -1,0 +1,111 @@
+/*
+        #define BUTTON              BUTTON_2
+ 
+#define ACTION_NONE         0
+#define ACTION_HOLD         1
+#define ACTION_SINGLE_TAP   2
+#define ACTION_DOUBLE_TAP   3
+ 
+uint8 triggered_action;
+uint8 process_action;
+ 
+main {
+    if(!process_action) {
+        if(event_active(BUTTON)) {
+            triggered_action = ACTION_SINGLE_TAP;
+            if(time_release(BUTTON) < 150) {
+                triggered_action = ACTION_DOUBLE_TAP;
+                process_action = TRUE;
+            }
+        }
+        if(triggered_action == ACTION_SINGLE_TAP) {
+            if(check_release(BUTTON, 175)) {
+                process_action = TRUE;
+            }
+        }
+        if(check_active(BUTTON, 200)) {
+            triggered_action = ACTION_HOLD;
+            process_action = TRUE;
+        }
+    } else if(check_release(BUTTON, 250)) {
+        process_action = FALSE;
+    }
+    if(process_action) {
+        switch(triggered_action) {
+            case ACTION_HOLD: {
+                //
+                // TODO Hold action
+                //
+            } break;
+            case ACTION_SINGLE_TAP: {
+                //
+                // TODO Single-tap action
+                //
+            } break;
+            case ACTION_DOUBLE_TAP: {
+                //
+                // TODO Double-tap action
+                //
+            } break;
+        }
+        triggered_action = ACTION_NONE;
+    }
+}
+ 
+ script one
+*/
+
+define BUTTON=  PS4_CROSS;
+define ACTION_NONE         =0;
+define ACTION_HOLD         =1;
+define ACTION_SINGLE_TAP   =2;
+define ACTION_DOUBLE_TAP   =3;
+ 
+
+const uint8 triggered_action[] = { 0, 1, 2 };
+const uint8 process_action[][] = { { 0, 1, 2 }, { 3, 4, 5 } };
+ 
+main {
+    if(!process_action) {
+        if(event_active(BUTTON)) {
+            triggered_action = ACTION_SINGLE_TAP;
+            if(time_release(BUTTON) < 150) {
+                triggered_action = ACTION_DOUBLE_TAP;
+                process_action = TRUE;
+            }
+        }
+        if(triggered_action == ACTION_SINGLE_TAP) {
+            if(check_release(BUTTON, 175)) {
+                process_action = TRUE;
+            }
+        }
+        if(check_active(BUTTON, 200)) {
+            triggered_action = ACTION_HOLD;
+            process_action = TRUE;
+        }
+    } else if(check_release(BUTTON, 250)) {
+        process_action = FALSE;
+    }
+    if(process_action) {
+        switch(triggered_action) {
+            while ACTION_HOLD: {
+                //
+                // TODO Hold action
+                //
+            } break;
+            // case ACTION_SINGLE_TAP: {
+            while ACTION_SINGLE_TAP: {
+                //
+                // TODO Single-tap action
+                //
+            } break;
+            while ACTION_DOUBLE_TAP: {
+                //
+                // TODO Double-tap action
+                //
+            } break;
+        }
+        triggered_action = ACTION_NONE;
+    }
+}
+ 

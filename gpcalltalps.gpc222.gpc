@@ -1,0 +1,101 @@
+#define BUTTON = BUTTON_16;
+ 
+int btn_timer, tap;
+ 
+main {
+    if(btn_timer) { 
+        btn_timer-=elapsed_time();
+        if(!btn_timer){
+            if(1==tap) combo_run(one); 
+            else if(2==tap) combo_run(two); 
+            tap=0;
+        }
+    }
+    if(event_active(BUTTON)){
+        if((tap = tap ++)) btn_timer = -1;
+    }
+
+// //     set_val(BUTTON, check_active(BUTTON, 256) ? (combo_stop(one), 100) : 0);
+    if(check_active(BUTTON, 120)) && set_val(BUTTON, 0);
+    //  (combo_stop(one), 100) : 0);
+    // set_val(BUTTON,  ? (combo_stop(one), 100) : 0);
+}
+ 
+combo one {
+  printf("1");
+    set_val(BUTTON_16,100);
+    wait(300);
+}
+combo two {
+  printf("2");
+    set_val(BUTTON_15,100);
+    wait(300);
+}
+ 
+
+
+// // int BUTTON BUTTON_16
+ 
+// // uint8 btn_timer, tap;
+// int BUTTON = PS4_CIRCLE;
+ 
+// // uint8 btn_timer, tap;
+// int btn_timer, tap;
+ 
+ 
+// // main {
+//   main {
+//     if(btn_timer) {
+//       btn_timer-=elapsed_time();
+//         if(!btn_timer){
+//             if(1==tap) combo_run(one); 
+//             else if(2==tap) combo_run(two); 
+//             tap=0;
+//         }
+      
+//     }
+//     if(event_active(BUTTON)){
+//         // if((++tap)) btn_timer = -1;
+//         if((tap = tap ++)) btn_timer = -1;
+//         if(set_val(BUTTON, check_active(BUTTON, 256) ? (combo_stop(one), 100) : 0));
+//     }
+
+        
+// }
+// //     if(btn_timer) { 
+// //         btn_timer-=elapsed_time();
+// //         if(!btn_timer){
+// //             if(1==tap) combo_run(one); 
+// //             else if(2==tap) combo_run(two); 
+// //             tap=0;
+// //         }
+// //     }
+// //     if(event_active(BUTTON)){
+// //         if((++tap)) btn_timer = -1;
+// //     }
+// //     set_val(BUTTON, check_active(BUTTON, 256) ? (combo_stop(one), 100) : 0);
+// // }
+ 
+// // combo one {
+// //   printf("1");
+// // }
+// // combo two {
+// //   printf("2");
+// // }
+
+
+// function check_active(){
+
+// }
+ 
+
+        
+//     // }
+
+ 
+// combo one {
+//   printf("1");
+// }
+// combo two {
+//   printf("2");
+// }
