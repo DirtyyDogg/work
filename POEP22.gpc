@@ -2005,13 +2005,15 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 		    	// 	fix = FALSE;
 
           if(pauw) {
-            if(swap_on==1 && !swap_on2) {swap_on2=1; swap_on=FALSE;}
-            else
-            if(!swap_on && swap_on2==1) {swap_on2=FALSE; swap_on=1;}
-            else
-            if(!swap_on && !swap_on2) {swap_on2=FALSE; swap_on=FALSE; combo_run(vib3x); }
-            else
-            if(swap_on && !swap_on2) {swap_on2=TRUE; swap_on=FALSE; combo_run(vib3x); }
+            // if(swap_on==1 && !swap_on2) {swap_on2=1; swap_on=FALSE;}
+            // else
+            // if(!swap_on && swap_on2==1) {swap_on2=FALSE; swap_on=1;}
+            // else
+            // if(!swap_on && !swap_on2) {swap_on2=FALSE; swap_on=FALSE; combo_run(vib3x); }
+            // else
+            // if(swap_on && !swap_on2) {swap_on2=TRUE; swap_on=FALSE; combo_run(vib3x); }
+
+
           //   if(event_press(PS4_CROSS)) combo_run(pressXonce);
           //   if(get_val(PS4_CROSS) && get_ptime(PS4_CROSS) < 300) set_val(PS4_CROSS,0);
           //   if(event_press(PS4_CROSS)) combo_run(pressXonce);
@@ -2596,7 +2598,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 			  	// If Head Shot is enable for the curent profile
 					if(toggle_headshot[profile_idx] == 1)
 					{	
-            set_val(TRACE_4, headshot_Y_val);
+              set_val(TRACE_5, headshot_Y_val);
 						if(!get_val(PS4_L1) && get_val(PS4_L2))
 						{
 							
@@ -2614,13 +2616,14 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 								range[profile_idx] = 0;
 
             AUTO_HEADSHOT_RUNNING=TRUE;
-    		
+    		    set_val(TRACE_4, headshot_Y_val);
     		    set_val(PS4_L1,0);
 						
 			        	// if(range[profile_idx] == 0 &&!LONG_RUNNING&&!MIDDLE_RUNNING&&!CLOSE_RUNNING)
 			        	if(range[profile_idx] == 0 &&!CLOSE_RUNNING)
                 {
 			            	// range_wait = WAIT_CLOSE;
+                    // headshot_Y_val = -100;
                     WAIT=250; combo_run(CLOSE_DISTANCE);
 
                 }
@@ -2628,6 +2631,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 			        	if(range[profile_idx] == 1 &&!MIDDLE_RUNNING)
                 {
 			            	// range_wait = WAIT_MEDIUM;`
+                    // headshot_Y_val = -100;
                     WAIT=250; combo_run(MIDDLE_DISTANCE);
 
                 }
@@ -2636,6 +2640,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
                 {
 
 			            	// range_wait = WAIT_LONG;
+                    // headshot_Y_val = -100;
                     WAIT=250;
                     combo_run(LONG_DISTANCE);
                 }
@@ -2645,25 +2650,31 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
     			// if(!MIDDLE_RUNNING&& range[profile_idx] == 1 /*!test_bit(range[profile_idx],0)*/){  WAIT=250; combo_run(MIDDLE_DISTANCE); }
     			// if(!CLOSE_RUNNING&& range[profile_idx] == 0 /*!test_bit(range[profile_idx],0)*/){  WAIT=250; combo_run(CLOSE_DISTANCE); }
     			// combo_run(R3_PRESS); 
-    		// }
+    		// } 
+    
 			
-			    		if(!get_val(PS4_L1) && (get_lval(PS4_L2) && get_ptime(PS4_L2) > 300 && !head))
+			    		if(!get_val(PS4_L1) && !head && (get_lval(PS4_L2) && get_ptime(PS4_L2) > 300 ))
 			    		{
-			      			// combo_run(HEADSHOT);
+                  // headshot_Y_val = -100;
+			      			combo_run(HEADSHOT);
 			       			head = TRUE;
 			      		}	
 			         
 						}
-			    		if(event_release(PS4_L2) && get_ptime(PS4_L2) > 150 /* && CLOSE_RUNNING || MIDDLE_RUNNING || LONG_RUNNING  */)
+            set_val(TRACE_4, headshot_Y_val);
+			    		if(event_release(PS4_L2) && get_ptime(PS4_L2) > 350 /* && CLOSE_RUNNING || MIDDLE_RUNNING || LONG_RUNNING  */)
 			    		{
-			       			head = FALSE;
+                  headshot_Y_val = (3 * (headshot_Y_val / 5)) * -1;
                   combo_stop(R3_PRESS); combo_stop(LONG_DISTANCE); combo_stop(PLUS_DISTANCE); combo_stop(MIDDLE_DISTANCE); combo_stop(CLOSE_DISTANCE); combo_stop(MINUS_DISTANCE); CLOSE_RUNNING=FALSE; MIDDLE_RUNNING=FALSE; LONG_RUNNING=FALSE; R3_ACTIVATION=FALSE; AUTO_HEADSHOT_RUNNING=FALSE;
-			       			headshot_Y_val = (3 * (headshot_Y_val / 5)) * -1;
-                  range_wait = 200;
+			       			
 			       			combo_run(HEADSHOT);
+                  
+			       			head = FALSE;
+                  // range_wait = 200;
 
 
 			       		}
+                
 			    		// if(event_release(PS4_L2) && get_ptime(PS4_L2) > 300)
 			    		// {
 			       	// 		// headshot_Y_val = (3 * (headshot_Y_val / 5)) * -1;
@@ -2945,7 +2956,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
           /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
 			    |                                                      unscope SHOT (8)                                                    |
 			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
-          
+          /* Auto unscoop mod  */
           if(pauw)  {
             /* goin in to scope  */
             if(!bScope & get_val(PS4_L2) && !event_press(PS4_DOWN) )  {  combo_run(cScope); }
@@ -3822,7 +3833,7 @@ combo RAPIDFIRE {
 
 combo HEADSHOT { 
     set_val(PS4_RY, headshot_Y_val);
-    wait(range_wait);
+    wait(200);
 }
     
 // 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 〜 
