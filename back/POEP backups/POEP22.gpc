@@ -1,4 +1,3 @@
-int deadstatus =1;
 // Text to display (11 char max)
 	const string OFF = "OFF"; 
 	const string ON = "ON"; 
@@ -424,7 +423,6 @@ init{
   fasttonics_mode = 2;
   bScope =FALSE;
   l3klik=TRUE;
-  deadshotnew = 0;
 	
 // Profile 2
 	// Toggles
@@ -2917,55 +2915,63 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 		}
 
           
+          
           /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
-			    |                                                NEW      DEAD SHOT (8)    insta sh and let go                                                |
+			    |                                                OUD      DEAD SHOT (8)                                                    |
 			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
-			  	//If DeadShot is enable for the curent profile
-
-          set_val(TRACE_2, deadeyeEND)
-              set_val(TRACE_3, nowshoot)
-              set_val(TRACE_4, testmemo);
-              set_val(TRACE_6, deadeyeINIT)
-					if(toggle_deadshot[profile_idx] == 1 && !deadstatus == 1)
+			  	// If DeadShot is enable for the curent profile
+					if(toggle_deadshot[profile_idx] == 1)
 					{
-              set_val(TRACE_2, deadeyeEND);
-              
-              // if(!get_val(PS4_L2) &&get_val(PS4_R2) && !deadeyeINIT){
-              if(get_val(PS4_L2) &&get_val(PS4_R2) && !deadeyeINIT){
-                combo_run(DEAD)
+              if(get_val(PS4_L2) && get_val(PS4_R2)&& !deadeyeINIT){
+                combo_run(DEADLY2);
+                deadeyeINIT = 90;
                 deadeyeEND = 100;
                 // deadeyeINIT = !deadeyeINIT;
               }
               
-              if(deadeyeINIT&& get_val(PS4_L2) && get_val(PS4_R2) ) {if(nowshoot== 999) combo_stop(DEADSHOT); combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              if(deadeyeINIT&& !get_val(PS4_R2) && !get_val(PS4_L2) ) {if(nowshoot== 999) combo_stop(DEADSHOT); combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
               
-              
-              
-          }
-          
-          
-          
-        
+              else
+              if(!get_val(PS4_L2) && get_val(PS4_L2) && get_val(PS4_R1) && !deadeyeINIT){
+                combo_run(DEADLY);
+                deadeyeINIT = 90;
+                deadeyeEND = 100;
+                // deadeyeINIT = !deadeyeINIT;
+              }
+
+              if(deadeyeINIT&& !get_val(PS4_R2) && !get_val(PS4_L2) ) {if(nowshoot== 999) combo_stop(DEADSHOT); combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+
+              // if(deadeyeINIT = 1)	combo_run(DEADSHOT);
+
+              // event_release(PS4_L2) && deadeyeINIT || deadeyeEND
+              // if(deadeyeINIT =1 && !get_val(PS4_L2)) { combo_stop(DEADSHOT); deadeyeINIT=FALSE; deadeyeEND=FALSE; }
+              // if(deadeyeINIT =1) { combo_stop(DEADSHOT); deadeyeINIT=0; deadeyeEND=0; }
+              // deadeyeINIT = FALSE;
+              // deadeyeEND=FALSE;
+			    		// if(!deadeye && get_lval(PS4_L2) && event_press(PS4_R2)) 
+			    		// if(get_val(PS4_L2) && !deadeyeEND ){
+
+			    }
+			    
           /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
-			    |                                        OUD      DEAD SHOT (8)                                                         |
-          |                      aim first postition aim in dead and release r2 to shoot                                          |
+			    |                                                OUD      DEAD SHOT (8)                                                    |
 			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
 			  	// If DeadShot is enable for the curent profile
-          
+          /*
           set_val(TRACE_2, deadeyeEND)
               set_val(TRACE_3, nowshoot)
               set_val(TRACE_4, testmemo);
               set_val(TRACE_6, deadeyeINIT)
-					if(toggle_deadshot[profile_idx] == 1 &&deadstatus ==1)
+					if(toggle_deadshot[profile_idx] == 1)
 					{
               set_val(TRACE_2, deadeyeEND);
               set_val(TRACE_3, nowshoot);
               set_val(TRACE_4, testmemo);
               set_val(TRACE_6, deadeyeINIT);
               
-              if(get_val(PS4_L2) &&get_val(PS4_R2) && !deadeyeINIT){
-                combo_run(DEADLY2)
-                // deadeyeINIT = 90;
+              if(get_val(PS4_R2) && !deadeyeINIT){
+                combo_run(DEADLY)
+                deadeyeINIT = 90;
                 deadeyeEND = 100;
                 // deadeyeINIT = !deadeyeINIT;
               }
@@ -2982,7 +2988,7 @@ if(get_val(PS4_CIRCLE) && get_val(PS4_L2)) {
 			    		// if(get_val(PS4_L2) && !deadeyeEND ){
 
 			    }
-          
+          */
            /*— ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌
 			    |                                                    AUTO DEADEYE (9)                                                   |
 			    ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ — ◌ —*/ 
@@ -3953,29 +3959,6 @@ combo RUN_FPS {
 //     wait(370);
 // }
 
-combo DEAD {
-  
-    wait(20);
-    set_val(PS4_R3, 100);
-    wait(100);
-    // set_val(PS4_L2, 100);
-    set_val(PS4_R2, 100);
-    wait(100);
-
-    set_val(PS4_R3, 0);
-    set_val(PS4_L2, 0);
-    set_val(PS4_R2, 0);
-    wait(90);
-
-    set_val(PS4_R3, 100);
-    set_val(PS4_L2, 100);
-    wait(100);
-    set_val(PS4_R3, 0);
-    set_val(PS4_L2, 0);
-    set_val(PS4_R2, 0);
-    wait(90);
-    nowshoot= 999;
-}
 combo DEADLY {
     wait(20);
     set_val(PS4_R3, 100);
@@ -3988,42 +3971,26 @@ combo DEADLY {
     wait(90);
 }
 combo DEADLY2 {
-  set_val(PS4_L2,100);
-    set_val(PS4_R2,100);
+    set_val(PS4_L2,100);
     set_val(PS4_R3,100);
+    set_val(PS4_R2,0);
+    wait(200);
     wait(40);
     set_val(PS4_L2,100);
+    set_val(PS4_R3,0);
     set_val(PS4_R2,0);
-    set_val(PS4_R3,100);
+    wait(200);
     wait(40);
-    set_val(PS4_L2,100);
-    set_val(PS4_R2,0);
-    set_val(PS4_R3,100);
-    wait(40);
-    set_val(PS4_L2,100);
-    set_val(PS4_R2,0);
-    wait(370);
-    // set_val(PS4_L2,100);
-    // set_val(PS4_R3,100);
-    // set_val(PS4_R2,0);
-    // wait(200);
-    // set_val(PS4_L2,100);
-    // wait(40);
-    // set_val(PS4_L2,100);
     // set_val(PS4_R3,0);
-    // set_val(PS4_R2,0);
-    // wait(200);
-    // wait(40);
-    // // set_val(PS4_R3,0);
-    // // wait(300);
+    // wait(300);
     
-    // // nowshoot=TRUE;
-    // deadeyeINIT = 100;
-    // wait(40);
-    // // deadeyeEND = 1;
-    // wait(40);
-    // wait(400);
-    // wait(40);
+    // nowshoot=TRUE;
+    deadeyeINIT = 100;
+    wait(40);
+    // deadeyeEND = 1;
+    wait(40);
+    wait(400);
+    wait(40);
 }
 combo DEADSHOT {
     set_val(PS4_L2,100);
